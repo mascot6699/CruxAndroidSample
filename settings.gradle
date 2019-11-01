@@ -1,0 +1,2 @@
+include ':app', ':cruxpayandroidsdk'
+rootProject.name='Cruxpay Android SDK'
