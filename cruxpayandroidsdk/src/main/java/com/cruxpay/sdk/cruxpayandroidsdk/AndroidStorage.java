@@ -3,23 +3,23 @@ package com.cruxpay.sdk.cruxpayandroidsdk;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import org.liquidplayer.javascript.JSObject;
 
-public class AndroidStorage extends JSObject {
+public class AndroidStorage {
     private Context context;
+    private static final String SHARE_PREFERENCE_NAME = "crux.storage";
 
     public AndroidStorage(Context context) {
         this.context = context;
     }
 
     public String getItemWithKey(final String key) {
-        SharedPreferences sharedPref = this.context.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = this.context.getSharedPreferences(SHARE_PREFERENCE_NAME, Context.MODE_PRIVATE);
         String defaultValue = "";
         return sharedPref.getString(key, defaultValue);
     }
 
     public void setItemWithKeyValue(final String key, final String value) {
-        SharedPreferences sharedPref = this.context.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = this.context.getSharedPreferences(SHARE_PREFERENCE_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(key, value);
         editor.commit();
